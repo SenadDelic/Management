@@ -64,7 +64,6 @@ public class UserDb {
         return users;
     }
 
-    // delete user by id
     public boolean deleteUser(int id) {
         boolean update = false;
 
@@ -79,7 +78,7 @@ public class UserDb {
 
     public boolean updateUser(User user) {
         boolean rowUpdated = false;
-        try (PreparedStatement statement = ConnectionManagement.getInstance().getConnection().prepareStatement(Constants.UPDATE_USERS_SQL);) {
+        try (PreparedStatement statement = ConnectionManagement.getInstance().getConnection().prepareStatement(Constants.UPDATE_USERS_SQL)) {
             statement.setString(1, user.getName());
             statement.setString(2, user.getEmail());
             statement.setString(3, user.getCountry());
